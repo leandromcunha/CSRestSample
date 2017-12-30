@@ -10,6 +10,8 @@ package br.com.cs.rs.dto;
 import java.io.Serializable;
 import java.util.Date;
 
+import org.springframework.http.HttpStatus;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -53,6 +55,16 @@ public class DetailErro<E extends RuntimeException> implements Serializable {
      */
     @JsonInclude(Include.NON_NULL)
     private String messageErro;
+
+    /**
+     * Construtor padrão DetailErro.java.
+     */
+    public DetailErro(final E e, final HttpStatus status) {
+        this.setException(e);
+        this.setMessageErro(e.getMessage());
+        this.setStatus(status.value());
+        this.setTimestamp(new Date());
+    }
 
     /**
      * Método get do atributo status

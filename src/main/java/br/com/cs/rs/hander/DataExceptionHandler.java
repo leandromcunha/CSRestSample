@@ -7,8 +7,6 @@
  */
 package br.com.cs.rs.hander;
 
-import java.util.Date;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -38,12 +36,8 @@ public class DataExceptionHandler {
     public DetailErro<DataNotFoundExecption> handleDataNotFoundException(
                     final DataNotFoundExecption e,
                     final HttpServletRequest request) {
-        DetailErro<DataNotFoundExecption> erro = new DetailErro<>();
-        erro.setStatus(HttpStatus.NOT_FOUND.value());
-        erro.setTimestamp(new Date());
-        erro.setMessageErro(e.getMessage());
-        erro.setException(e);
-        return erro;
+        return new DetailErro<>(e,
+                        HttpStatus.NOT_FOUND);
     }
 
     @ResponseBody
@@ -52,11 +46,8 @@ public class DataExceptionHandler {
     public DetailErro<DataInternalErrorExecption> handleInternalErroException(
                     final DataInternalErrorExecption e,
                     final HttpServletRequest request) {
-        DetailErro<DataInternalErrorExecption> erro = new DetailErro<>();
-        erro.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
-        erro.setTimestamp(new Date());
-        erro.setMessageErro(e.getMessage());
-        erro.setException(e);
-        return erro;
+        return new DetailErro<>(e,
+                        HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
 }
