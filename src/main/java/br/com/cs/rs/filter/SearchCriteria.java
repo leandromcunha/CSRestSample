@@ -17,4 +17,19 @@ import java.io.Serializable;
  */
 public interface SearchCriteria extends Serializable {
 
+    /**
+     * Metodo getPage responsavel por retornar a pagina desejada.
+     *
+     * @return
+     */
+    Integer getPage();
+
+    /**
+     * Metodo getSize responsavel por retornar a quantidade de registro por
+     * paginas.
+     *
+     * @return
+     */
+    Integer getSize();
+
 }

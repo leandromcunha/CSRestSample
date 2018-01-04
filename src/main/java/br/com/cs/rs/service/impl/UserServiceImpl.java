@@ -142,8 +142,10 @@ public class UserServiceImpl implements UserService {
 
         SpecificaionSearchCriteria<UserSearchCriteria, User> spec = new SpecificaionSearchCriteria<>(
                         criteria);
+
         Page<User> users = this.repository.findAll(spec,
-                        new PageRequest(0, 25));
+                        new PageRequest(criteria.getPage(),
+                                        criteria.getSize()));
 
         if (CollectionUtils.isEmpty(users.getContent())) {
             throw new DataNotFoundExecption(

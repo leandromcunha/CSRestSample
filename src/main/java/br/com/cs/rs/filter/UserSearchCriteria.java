@@ -13,7 +13,7 @@ package br.com.cs.rs.filter;
  * @author <a href="mailto:leandromcunha@gmail.com>Leandro Marques da Cunha</a>
  * @version $Id$
  */
-public class UserSearchCriteria implements SearchCriteria {
+public class UserSearchCriteria extends SearchCriteriaAbstract {
 
     /**
      * Atributo serialVersionUID do tipo long responsável por guarda o valor que
